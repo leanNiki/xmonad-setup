@@ -1,0 +1,37 @@
+Config {
+	font = "xft:DejaVu Sans Mono for Powerline:style=Book:pixelsize=17"
+	, borderColor = "black"
+	, border = NoBorder
+	, bgColor = "#181818"
+	, fgColor = "#282828"
+	, position = TopW L 97
+	, lowerOnStart = True
+	, pickBroadest = False
+	, persistent = False
+	, hideOnStart = False
+	, iconRoot = "."
+	, allDesktops = True
+	, overrideRedirect = True
+	, commands = [
+		Run Weather "§4charStationID" ["-t","<tempC>C"] 36000
+		, Run Network "§iface" ["-t","NET: <rx>KB|<tx>KB","-L","0","-H","1500","--high","#ffffff,#de5b56"] 10
+		, Run Cpu ["-t","CPU: <total>%" , "-L","3","-H","50","--normal","#ffffff,#de5b56","--high","#ffffff,#de5b56"] 10
+		, Run Memory ["-t","RAM: <usedratio>%","-H","20","--high","#ffffff,#de5b56"] 10
+		, Run BatteryP ["BAT0"] ["-t","BAT: <left>% / <timeleft>","-L","50","-H","75","--low","#ffffff,#de5b56"] 10
+		, Run Date "%a %b %_d" "date" 10
+		, Run Date "%H:%M:%S" "date2" 10
+		, Run StdinReader
+		]
+	, sepChar = "%"
+	, alignSep = "}{"
+	, template = "%StdinReader% } \
+	\<fc=#ab4642></fc><fc=#de5b56,#ab4642></fc><fc=#282828,#de5b56> %battery% \
+	\<fc=#ab4642,#de5b56></fc><fc=#de5b56,#ab4642></fc><fc=#282828,#de5b56> %cpu% \
+	\<fc=#de5b56,#ab4642></fc><fc=#ab4642,#de5b56></fc> %memory% \
+	\<fc=#ab4642,#de5b56></fc><fc=#de5b56,#ab4642></fc> %wlp58s0% \
+	\<fc=#de5b56,#ab4642></fc><fc=#ab4642></fc></fc></fc> { \
+	\<fc=#dc9656></fc><fc=#f7ca88,#dc9656></fc><fc=#282828,#f7ca88> %date% \
+	\<fc=#dc9656,#f7ca88></fc><fc=#f7ca88,#dc9656></fc><fc=#282828,#f7ca88> %date2% \
+	\</fc><fc=#6197ab,#f7ca88></fc><fc=#7cafc2,#6197ab></fc><fc=#282828,#7cafc2> %LOWW% \
+	\</fc><fc=#6197ab,#7cafc2><fc=#7cafc2,#6197ab></fc> </fc></fc>"
+	}
